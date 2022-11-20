@@ -3,15 +3,25 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "start": "TAR=\"${TARGET:-serve}\"; nx run-many --target=$TAR --all",
+    "build": "TARGET=build pnpm start",
+    "lint": "TARGET=lint pnpm start",
+    "test": "TARGET=test pnpm start",
+    "postinstall": "husky install"
   },
   "private": true,
+  "lint-staged": {
+    "./apps/**/*.{ts,js,jsx,tsx}": [
+      "eslint --ignore-path .gitignore --fix",
+      "prettier --ignore-path .gitignore --write"
+    ]
+  },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     "core-js": "^3.6.5",
     "next": "13.0.0",
     "react": "18.2.0",
@@ -22,6 +32,8 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@nrwl/cli": "15.2.1",
@@ -50,10 +62,14 @@
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-no-console-log": "^2.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "7.31.8",
     "eslint-plugin-react-hooks": "4.6.0",
+    "husky": "^8.0.2",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
+    "lint-staged": "^13.0.3",
     "nx": "15.2.1",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.2.0",

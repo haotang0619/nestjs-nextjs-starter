@@ -1,8 +1,10 @@
 {
+  "plugins": ["prettier"],
   "extends": [
     "plugin:@nrwl/nx/react-typescript",
     "next",
     "next/core-web-vitals",
+    "prettier",
     "../../.eslintrc.json"
   ],
   "ignorePatterns": ["!**/*", ".next/**/*"],
@@ -23,6 +25,7 @@
     }
   ],
   "rules": {
+    "prettier/prettier": "error",
     "@next/next/no-html-link-for-pages": "off"
   },
   "env": {
