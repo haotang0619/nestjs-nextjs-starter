@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "next",
+    "next/core-web-vitals",
+    "plugin:perfectionist/recommended-natural",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint/eslint-plugin", "perfectionist", "prettier"],
+  "rules": {
+    "@next/next/no-img-element": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-console": "warn",
+    "perfectionist/sort-imports": [
+      "error",
+      {
+        "type": "alphabetical",
+        "order": "asc",
+        "ignore-case": true,
+        "groups": ["builtin", "react", "external", "internal", "parent", "sibling"],
+        "custom-groups": {
+          "value": { "react": ["next", "next/**", "react"], "internal": ["@/**"] },
+          "type": { "react": "react" }
+        },
+        "newlines-between": "always"
+      }
+    ],
+    "prettier/prettier": "error",
+    "react-hooks/exhaustive-deps": "off"
+  }
+}
