@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "TAR=\"${TARGET:-serve}\"; nx run-many --target=$TAR --all",
-    "build": "TARGET=build pnpm start",
+    "start:prod": "TARGET=serve pnpm start --prod",
+    "build": "TARGET=build pnpm start --verbose",
     "lint": "TARGET=lint pnpm start",
     "test": "TARGET=test pnpm start",
     "postinstall": "husky install"
