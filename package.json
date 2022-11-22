@@ -5,7 +5,9 @@
   "scripts": {
     "start": "TAR=\"${TARGET:-serve}\"; nx run-many --target=$TAR --all",
     "start:prod": "TARGET=serve pnpm start --prod",
+    "start:story": "start-storybook -p 4400",
     "build": "TARGET=build pnpm start --verbose",
+    "build:story": "build-storybook",
     "lint": "TARGET=lint pnpm start",
     "test": "TARGET=test pnpm start",
     "postinstall": "husky install"
@@ -48,6 +50,9 @@
     "@nrwl/react": "15.2.1",
     "@nrwl/web": "15.2.1",
     "@nrwl/workspace": "15.2.1",
+    "@storybook/builder-webpack5": "^6.5.13",
+    "@storybook/manager-webpack5": "^6.5.13",
+    "@storybook/react": "^6.5.13",
     "@testing-library/react": "13.4.0",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",

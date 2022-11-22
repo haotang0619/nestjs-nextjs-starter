@@ -14,11 +14,10 @@
 
 ### Folder Structure
 
-1. `.storybook`: Folder used by Storybook.
-2. `/app`: Contains code (components, business logic, types) that is being used by the special pages/\_app.tsx Next.js file.
-3. `/common`: Contains everything that cannot be categorized as a module.
-4. `/layouts`: Contains the layouts used by pages.
-5. `/modules`: Contains related pieces of code (components, types, utils) grouped together.
-6. `/pages`: Contains Next.js pages.
-7. `/public`: Static file serving.
-8. `/stories`: Contains Storybook stories.
+1. `/app`: Contains code (components, business logic, types) that is being used by the special pages/\_app.tsx Next.js file.
+2. `/common`: Contains everything that cannot be categorized as a module.
+3. `/layouts`: Contains the layouts used by pages.
+4. `/modules`: Contains related pieces of code (components, types, utils) grouped together.
+5. `/pages`: Contains Next.js pages.
+6. `/public`: Static file serving.
+7. `/stories`: Contains Storybook stories.
