@@ -14,14 +14,14 @@
 ### Folder Structure (in `/src`)
 
 1. `/app` The final wrapper module
-2. `/common` The common module
-3. `/configs` The configurations for this project
-4. `/health` health check module for every service integrated
-5. `/jobs` cron job or schedule task
-6. `/language` json languages
-7. `/migration` migrate all init data for test the project
-8. `/modules` other modules based on service/project
-9. `/router` endpoint router. `Controller` will put in this
+2. `/assets` Static file serving
+3. `/common` The common module
+4. `/configs` The configurations for this project
+5. `/environments` Environment configurations of Nx
+6. `/health` health check module for every service integrated
+7. `/jobs` cron job or schedule task
+8. `/language` json languages
+9. `/modules` other modules based on service/project
 
 ### Module structure
 
@@ -30,22 +30,19 @@ Full structure of module
 ```txt
 .
 └── module1
-    ├── abstracts
     ├── constants // constant like enum, static value, status code, etc
     ├── controllers // business logic for rest api
     ├── decorators // warper decorator, custom decorator, etc
-    ├── dtos // request validation
     ├── docs // swagger
+    ├── dtos // request validation
     ├── errors // custom error
     ├── filters // custom filter
     ├── guards // validate related with database
     ├── indicators // custom health check indicator
     ├── interceptors // custom interceptors
     ├── interfaces
-    ├── pipes
-    ├── repository
-        ├── entities // database entities
-        └── repositories // database repositories
+    ├── middlewares // custom middlewares
+    ├── schemas // dynamoose schemas
     ├── serializations // response serialization
     ├── services
     ├── tasks // task for cron job

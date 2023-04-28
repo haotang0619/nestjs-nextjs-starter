@@ -1,5 +1,10 @@
 {
-  "extends": ["../../.eslintrc.json", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["prettier"],
+  "extends": [
+    "../../.eslintrc.json",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -16,6 +21,7 @@
     }
   ],
   "rules": {
+     "prettier/prettier": "error",
     "@typescript-eslint/no-explicit-any": "off"
   }
 }
