@@ -47,7 +47,7 @@
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
       "rules": {
-        "no-unused-vars": "warn"
+        "import/no-anonymous-default-export": "off"
       }
     },
     {
