@@ -1,7 +1,12 @@
 //@ts-check
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { withNx } = require('@nrwl/next/plugins/with-nx');
+
+// Analyze bundles on local build
+const withBundleAnalyzer =
+  process.env.ANALYZE === 'true'
+    ? require('@next/bundle-analyzer')()
+    : (x) => x;
 
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
@@ -16,4 +21,7 @@ const nextConfig = {
   swcMinify: true,
 };
 
-module.exports = withNx(nextConfig);
+module.exports = () => {
+  const plugins = [withNx, withBundleAnalyzer];
+  return plugins.reduce((acc, plugin) => plugin(acc), nextConfig);
+};

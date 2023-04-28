@@ -7,7 +7,7 @@
 - [가이드](readme_kr.md) 문서는 [docs.nestjs.com](https://docs.nestjs.com)에서 확인하실 수 있습니다. 📚
 - [ガイド](readme_jp.md)は [docs.nestjs.com](https://docs.nestjs.com)でご確認ください。 📚
 
-## Structure (TBD)
+## Structure
 
 > Reference: https://github.com/andrechristikan/ack-nestjs-boilerplate
 
