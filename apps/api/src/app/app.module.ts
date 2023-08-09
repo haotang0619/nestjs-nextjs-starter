@@ -1,7 +1,8 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 
 import { CommonModule } from '../common/common.module';
 import { AppController } from './app.controller';
+import { AppMiddleware } from './app.middleware';
 import { AppService } from './app.service';
 
 @Module({
@@ -9,4 +10,8 @@ import { AppService } from './app.service';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(AppMiddleware).forRoutes('*');
+  }
+}

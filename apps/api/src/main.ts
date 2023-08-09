@@ -24,12 +24,20 @@ const initSwagger = (app: INestApplication) => {
   });
 };
 
+// CORS whitelist (ex: web, storybook)
+const whitelist = ['http://localhost:4200', 'http://localhost:4400'];
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new AppInterceptor());
+  app.enableCors({
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: whitelist,
+  });
   initSwagger(app);
   const port = process.env.PORT || 3333;
   await app.listen(port);
