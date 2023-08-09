@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
+import { Response } from 'express';
 
 import { HealthCheckDoc } from './app.doc';
 import { AppService } from './app.service';
@@ -9,7 +10,7 @@ export class AppController {
 
   @HealthCheckDoc()
   @Get()
-  getData() {
-    return this.appService.getData();
+  getData(@Res({ passthrough: true }) res: Response) {
+    return this.appService.getData(res);
   }
 }

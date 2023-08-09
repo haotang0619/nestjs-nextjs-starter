@@ -10,12 +10,14 @@ import {
   getSchemaPath,
 } from '@nestjs/swagger';
 
+import { AppResponseSerialization } from '../../app/app.serialization';
 import { IDocDefaultOptions, IDocOptions } from './doc.interface';
 
 export function Doc<T>(options?: IDocOptions<T>): MethodDecorator {
   const docs = [];
   const normDoc: IDocDefaultOptions = {
     httpStatus: options?.response?.httpStatus ?? HttpStatus.OK,
+    messageExample: options?.response?.messageExample ?? 'OK',
     serialization: options?.response?.classSerialization ?? undefined,
   };
 
@@ -45,22 +47,29 @@ export function Doc<T>(options?: IDocOptions<T>): MethodDecorator {
   return applyDecorators(...docs);
 }
 
-export function DocDefault(options: IDocDefaultOptions): MethodDecorator {
+export function DocDefault<T>({
+  httpStatus: status,
+  messageExample,
+  serialization,
+}: IDocDefaultOptions): MethodDecorator {
   const docs = [];
   const schema: Record<string, any> = {
-    properties: {},
+    allOf: [{ $ref: getSchemaPath(AppResponseSerialization<T>) }],
+    properties: {
+      statusCode: { type: 'number', example: status },
+      message: { type: 'string', example: messageExample },
+      success: { type: 'boolean', example: true },
+    },
   };
 
-  if (options.serialization) {
-    docs.push(ApiExtraModels(options.serialization));
-    schema.$ref = getSchemaPath(options.serialization);
+  if (serialization) {
+    docs.push(ApiExtraModels(serialization));
+    schema.properties.data = { $ref: getSchemaPath(serialization) };
   }
 
   return applyDecorators(
-    ApiResponse({
-      status: options.httpStatus,
-      schema,
-    }),
+    ApiExtraModels(AppResponseSerialization<T>),
+    ApiResponse({ status, schema }),
     ...docs,
   );
 }

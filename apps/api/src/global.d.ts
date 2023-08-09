@@ -10,5 +10,10 @@ declare global {
         userAgent: IResult;
       };
     }
+
+    export interface Response {
+      message: string;
+      success: boolean;
+    }
   }
 }

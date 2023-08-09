@@ -4,6 +4,7 @@ import { ClassConstructor } from 'class-transformer';
 
 export interface IDocDefaultOptions {
   httpStatus: HttpStatus;
+  messageExample?: string;
   serialization?: ClassConstructor<any>;
 }
 
@@ -15,6 +16,7 @@ export interface IDocOptions<T> {
 
 interface IDocResponseOptions<T> {
   httpStatus?: HttpStatus;
+  messageExample?: string;
   classSerialization?: ClassConstructor<T>;
 }
 
