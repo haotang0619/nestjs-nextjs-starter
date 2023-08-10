@@ -23,9 +23,10 @@
     }
   ],
   "rules": {
+    "@next/next/no-img-element": "off",
     "prettier/prettier": "error",
-    "react-hooks/exhaustive-deps": "off",
-    "@next/next/no-img-element": "off"
+    "react/jsx-sort-props": [1, { "ignoreCase": true }],
+    "react-hooks/exhaustive-deps": "off"
   },
   "env": {
     "jest": true
