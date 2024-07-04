@@ -1,28 +1,33 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "import", "no-console-log"],
+  "plugins": ["@nrwl/nx", "perfectionist"],
   "rules": {
-    "import/order": [
+    "no-console": "warn",
+    "perfectionist/sort-imports": [
       "error",
       {
-        "groups": ["builtin", "external", "internal"],
-        "pathGroups": [
-          {
-            "pattern": "{next/**,react}",
-            "group": "external",
-            "position": "before"
-          }
+        "type": "alphabetical",
+        "order": "asc",
+        "ignore-case": true,
+        "groups": [
+          "builtin",
+          "react",
+          "external",
+          "internal",
+          "parent",
+          "sibling"
         ],
-        "pathGroupsExcludedImportTypes": ["next/**", "react"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
+        "custom-groups": {
+          "value": {
+            "react": ["next", "next/**", "react"],
+            "internal": ["@/**"]
+          },
+          "type": { "react": "react" }
+        },
+        "newlines-between": "always"
       }
-    ],
-    "no-console-log/no-console-log": 1
+    ]
   },
   "overrides": [
     {
