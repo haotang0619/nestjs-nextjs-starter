@@ -3,8 +3,8 @@
 ## Overview
 
 - 🗂 [Nx](https://nx.dev/) monorepo
-- 🚀 [NestJS](https://nestjs.com/) 9
-- ⚡️ [Next.js](https://nextjs.org/) 13
+- 🚀 [NestJS](https://nestjs.com/) 10
+- ⚡️ [Next.js](https://nextjs.org/) 14
 - ⚛️ [React](https://beta.reactjs.org/) 18
 - ⛑ TypeScript
 - 📏 ESLint — To find and fix problems in your code

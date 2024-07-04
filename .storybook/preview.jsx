@@ -1,4 +1,4 @@
-import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
 
 const preview = {
   parameters: {
