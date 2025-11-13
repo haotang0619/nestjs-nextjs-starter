@@ -1,12 +1,36 @@
 import { createTheme } from '@mui/material/styles';
 
+import { GENERAL_Z_INDEX } from '@/constants/layout';
+
 import { colorVariables as colorVar } from './colorVariables';
-import { TextSize, TextWeight, textHierarchy, textStyle } from './util';
+import { TextSize, TextWeight, poppins, textHierarchy, textStyle } from './util';
 
 // Create a theme instance.
 export const theme = createTheme({
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: '8px',
+          boxShadow: 'none',
+          fontFamily: poppins.style.fontFamily,
+          fontWeight: 'var(--weight-M)',
+          textTransform: 'none',
+        },
+      },
+    },
     MuiDivider: { styleOverrides: { root: { borderColor: 'var(--neutral-3)' } } },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          '& .MuiTouchRipple-child': { borderRadius: '8px !important' },
+          borderRadius: '8px',
+        },
+      },
+    },
+    MuiInputBase: { styleOverrides: { root: { fontFamily: poppins.style.fontFamily } } },
+    MuiPopover: { styleOverrides: { root: { zIndex: `${GENERAL_Z_INDEX.POPOVER} !important` } } },
+    MuiPopper: { styleOverrides: { root: { zIndex: `${GENERAL_Z_INDEX.POPOVER} !important` } } },
     MuiTypography: {
       defaultProps: {
         variantMapping: textHierarchy.reduce((acc, key) => ({ ...acc, [key]: 'p' }), {}),
@@ -46,5 +70,5 @@ export const theme = createTheme({
       secondary: colorVar['--neutral-6'],
     },
   },
-  typography: { fontFamily: 'Poppins' }, // This changes all MUI components
+  typography: { fontFamily: poppins.style.fontFamily }, // This changes all MUI components
 });

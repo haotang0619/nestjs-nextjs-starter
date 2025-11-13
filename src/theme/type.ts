@@ -7,6 +7,10 @@ declare module '@mui/material/Typography' {
 }
 
 declare module '@mui/material/styles' {
+  interface PaletteColor {
+    selectedBackground?: string;
+  }
+
   interface SimplePaletteColorOptions {
     selectedBackground?: string;
   }

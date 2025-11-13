@@ -63,7 +63,7 @@ export default function GlobalCSS() {
             pointerEvents: isRouteChange ? 'none !important' : undefined,
           },
           'input:-webkit-autofill': {
-            '-webkit-box-shadow': '0 0 0px 1000px var(--neutral-1) inset !important',
+            WebkitBoxShadow: '0 0 0px 1000px var(--neutral-1) inset !important',
             backgroundColor: 'transparent !important',
             borderRadius: '12px !important',
           },

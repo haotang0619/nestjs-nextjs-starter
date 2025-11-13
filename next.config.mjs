@@ -1,7 +1,13 @@
-import NextBundleAnalyzer from '@next/bundle-analyzer';
-
 // Analyze bundles on local build
-const withBundleAnalyzer = process.env.ANALYZE === 'true' ? NextBundleAnalyzer() : (x) => x;
+const getWrapper = async () => {
+  if (process.env.ANALYZE === 'true') {
+    const { default: NextBundleAnalyzer } = await import('@next/bundle-analyzer');
+    return NextBundleAnalyzer();
+  }
+  return (x) => x;
+};
+
+const withBundleAnalyzer = await getWrapper();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

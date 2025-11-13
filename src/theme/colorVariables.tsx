@@ -1,4 +1,5 @@
 const primaryVariables = {
+  '--primary-0': '#F3FBF6',
   '--primary-1': '#D5F6E5',
   '--primary-2': '#C4E8B5',
   '--primary-3': '#A9D18E',
@@ -12,6 +13,7 @@ const primaryVariables = {
 };
 
 const secondaryVariables = {
+  '--secondary-0': '#F9FBE8',
   '--secondary-1': '#E7F68E',
   '--secondary-2': '#E4F4B5',
   '--secondary-3': '#D2F2A0',
@@ -25,7 +27,8 @@ const secondaryVariables = {
 };
 
 const neutralVariables = {
-  '--neutral-1': '#ffffff',
+  '--neutral-0': '#FAFAFC',
+  '--neutral-1': '#FFFFFF',
   '--neutral-2': '#EEE9EB',
   '--neutral-3': '#E0DBDD',
   '--neutral-4': '#CCC7C8',
