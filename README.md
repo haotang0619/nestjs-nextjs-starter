@@ -41,20 +41,20 @@ npm run start:dev
 1. `/app` The final wrapper module
 2. `/common` The common module
 3. `/configs` The configurations for this project
-4. `/health` health check module for every service integrated
-5. `/jobs` cron job or schedule task
-6. `/language` json languages
-7. `/modules` other modules based on service/project
+4. `/languages` json languages
+5. `/modules` other modules based on service/project
+6. `/queues` background/scheduled job processing
 
 ### Module structure
 
-Full structure of module
+Full structure of a module. `controllers/` and `services/` only exist as subfolders when a module has more than one controller or service — a module with just one of each keeps that file flat at the module's root instead.
+
+A module with a single controller and a single service:
 
 ```txt
 .
 └── module1
     ├── constants // constant like enum, static value, status code, etc
-    ├── controllers // business logic for rest api
     ├── decorators // warper decorator, custom decorator, etc
     ├── docs // swagger
     ├── dtos // request validation
@@ -67,9 +67,23 @@ Full structure of module
     ├── middlewares // custom middlewares
     ├── schemas // dynamoose schemas
     ├── serializations // response serialization
-    ├── services
-    ├── tasks // task for cron job
+    ├── module1.controller.ts
+    ├── module1.service.ts
     └── module1.module.ts
+```
+
+A module with more than one controller and/or service moves them into subfolders instead:
+
+```txt
+.
+└── module2
+    ├── controllers
+    │   ├── module2.controller.ts
+    │   └── module2-admin.controller.ts
+    ├── services
+    │   ├── module2.service.ts
+    │   └── module2-cache.service.ts
+    └── module2.module.ts
 ```
 
 ### Response Structure
