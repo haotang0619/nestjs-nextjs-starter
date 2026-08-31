@@ -43,7 +43,7 @@ To add a new size or weight: extend `textHierarchy` (and, for a genuinely new si
 
 ## `mergeSx` — how every reusable component composes its own default `sx` with a caller's
 
-`theme/util.ts`'s `mergeSx(...sxes)` concatenates multiple `sx` values into the array form MUI accepts, instead of shallow-merging (which would let a caller's `sx` silently clobber a component's own default styles for the same key in some cases, or vice versa depending on spread order). Every reusable primitive in `src/common/` (`Center`, `HorizontalBlock`, `VerticalBlock`, `LoaderCircle`, `ConfirmModal`) follows the same shape: accept an `sx` prop, `forwardRef`, and return `mergeSx(ownDefaultSx, sx)`. Follow this pattern for new shared components rather than spreading `sx` directly.
+`theme/util.ts`'s `mergeSx(...sxes)` concatenates multiple `sx` values into the array form MUI accepts, instead of shallow-merging (which would let a caller's `sx` silently clobber a component's own default styles for the same key in some cases, or vice versa depending on spread order). Every reusable primitive in `src/components/` (`Center`, `HorizontalBlock`, `VerticalBlock`, `LoaderCircle`, `ConfirmModal`) follows the same shape: accept an `sx` prop, `forwardRef`, and return `mergeSx(ownDefaultSx, sx)`. Follow this pattern for new shared components rather than spreading `sx` directly.
 
 ## `Providers.tsx` is the single composition root
 
@@ -51,7 +51,7 @@ To add a new size or weight: extend `textHierarchy` (and, for a genuinely new si
 
 ## Mutation errors → toast is centralized, not per-call
 
-`query/client.tsx`'s `defaultOnError`/`defaultErrorMessage` extract a message from an Axios error (`response.data.message`, falling back through `error.message` to a generic string) and fire a `react-hot-toast` error toast. `Providers.tsx` wires this in as `QueryClient`'s `defaultOptions.mutations.onError`, so **every** `useMutation` gets an error toast for free — don't re-implement error-toast handling in an individual mutation unless it genuinely needs different behavior. `services/local-api.ts`'s shared `axios` instance (`baseURL: '/api'`) is the client for this app's own Next.js API routes, not an external backend — there is no bundled API server in this branch.
+`query/client.tsx`'s `defaultOnError`/`defaultErrorMessage` extract a message from an Axios error (`response.data.message`, falling back through `error.message` to a generic string) and fire a `react-hot-toast` error toast. `Providers.tsx` wires this in as `QueryClient`'s `defaultOptions.mutations.onError`, so **every** `useMutation` gets an error toast for free — don't re-implement error-toast handling in an individual mutation unless it genuinely needs different behavior. `lib/local-api.ts`'s shared `axios` instance (`baseURL: '/api'`) is the client for this app's own Next.js API routes. `lib/api.ts` is a separate instance (`baseURL: 'http://localhost:4000/api'`) for the standalone backend on the `nest-only` branch — use whichever instance matches where a given call is actually going, don't default everything to `local-api`.
 
 ## `GENERAL_Z_INDEX` (`constants/layout.tsx`) is the z-index scale
 

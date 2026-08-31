@@ -56,22 +56,18 @@ Then `npm install` once — husky's hooks are installed via the `prepare` script
 
 ## Directory Structure
 
-> Reference:
->
-> 1. https://unlyed.github.io/next-right-now/reference/folder-structure
-> 2. https://github.com/UnlyEd/next-right-now/tree/v2-mst-aptd-at-lcz-sty
+> Reference: https://nextjs.org/docs/app/getting-started/project-structure
 
 1. `/app`: Contains Next.js App Router routes, layouts, and route-level conventions (`layout.tsx`, `page.tsx`, `error.tsx`, `sitemap.ts`, `robots.ts`, `globals.css`).
-2. `/common`: Contains common components.
-3. `/components`: Contains app-wide components, incl. `Providers.tsx` (client-side context providers).
-4. `/constants`: Constant like enum, static value, status code, etc.
-5. `/i18n`: Contains i18n files.
-6. `/icon`: Contains icon components.
-7. `/hooks`: Contains shared React hooks.
+2. `/components`: Contains shared/reusable UI components (e.g. `Center`, `ConfirmModal`) and app-wide components, incl. `Providers.tsx` (client-side context providers).
+3. `/constants`: Constant like enum, static value, status code, etc.
+4. `/i18n`: Contains i18n files.
+5. `/icon`: Contains icon components.
+6. `/hooks`: Contains shared React hooks.
+7. `/lib`: API client instances and other application/business logic.
 8. `/public`: Static file serving.
 9. `/query`: TanStack Query related code.
-10. `/services`: API related code.
-11. `/theme`: MUI theme configuration.
+10. `/theme`: MUI theme configuration.
 
 ## Scripts
 
