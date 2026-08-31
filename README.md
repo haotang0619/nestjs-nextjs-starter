@@ -26,6 +26,29 @@ npm run dev
 - Check `http://localhost:3000` for frontend.
 - Check `http://localhost:3000/api` for backend.
 
+## Using This as a Starter for a New Project
+
+To spin `next-only` off into its own standalone repo, with a single, complete initial commit and no shared git history with `nestjs-nextjs-starter`:
+
+```bash
+# Export the tree only — .gitignore'd files (node_modules, .next, ...) are excluded automatically
+git archive next-only | (mkdir -p /path/to/new-project && cd /path/to/new-project && tar -x)
+cd /path/to/new-project
+```
+
+Before making the first commit, rename `package.json`'s `"name"` and README's title/Overview for the real project.
+
+```bash
+git init -b main
+git add -A
+git commit -m "feat: initial commit"
+
+git remote add origin <new-project-repo-url>
+git push -u origin main
+```
+
+Then `npm install` once — husky's hooks are installed via the `prepare` script and won't exist until then.
+
 ## Resources
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
