@@ -28,6 +28,32 @@ npm run start:dev
 - Check `http://localhost:4000/api` for the API.
 - Check `http://localhost:4000/api/docs` for the API docs (Swagger).
 
+## Using This as a Starter for a New Project
+
+To spin `nest-only` off into its own standalone repo, with a single, complete initial commit and no shared git history with `nestjs-nextjs-starter`:
+
+```bash
+# Export the tree only — .gitignore'd files (node_modules, dist, ...) are excluded automatically
+git archive nest-only | (mkdir -p /path/to/new-project && cd /path/to/new-project && tar -x)
+cd /path/to/new-project
+```
+
+Before making the first commit:
+
+1. Delete `CLAUDE.md`'s "Relationship to other branches" section (see the note left there) — it describes this repo's multi-branch setup, which won't exist in the new repo.
+2. Rename `package.json`'s `"name"` and README's title/Overview for the real project.
+
+```bash
+git init -b main
+git add -A
+git commit -m "feat: initial commit"
+
+git remote add origin <new-project-repo-url>
+git push -u origin main
+```
+
+Then `npm install` once — husky's hooks are installed via the `prepare` script and won't exist until then.
+
 ## Resources
 
 - To check out the [guide](https://docs.nestjs.com), visit [docs.nestjs.com](https://docs.nestjs.com). 📚

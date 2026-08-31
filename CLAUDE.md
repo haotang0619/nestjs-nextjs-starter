@@ -82,6 +82,8 @@ New scripts should extend `AbstractScript` (`scripts/abstract-script.ts`), not h
 
 ### Relationship to other branches
 
+> **Spinning this branch off into a new standalone project?** Delete this section — it only describes `nest-only`'s relationship to the other branches of `nestjs-nextjs-starter`, which won't exist once this stops being a branch of that repo. See README's "Using This as a Starter for a New Project" for the extraction steps.
+
 This branch (`nest-only`) is an orphan branch (no shared git history with `main`) that extracted and modernized the NestJS half of `main`'s Nx monorepo (`apps/api`, was NestJS 10) into this standalone, npm-managed, Nest 12 repo. It mirrors the same treatment the `next-only` branch already did for the Next.js half (`apps/web`). Do not assume any shared tooling/config with `main` — this repo has no Nx, no monorepo, and a different toolchain (npm vs pnpm, ESLint flat config vs legacy `.eslintrc`).
 
 ## Lint conventions worth knowing
