@@ -1,4 +1,5 @@
 # compiled output
+/.next
 /dist
 /node_modules
 /build
@@ -36,6 +37,7 @@ npm-debug.log*
 .env.test.local
 .env.production.local
 .env.local
+next-env.d.ts
 
 # TypeScript incremental build info
 *.tsbuildinfo
