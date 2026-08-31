@@ -14,9 +14,10 @@ npm start             # start (no watch)
 npm run start:prod    # node dist/main, run against the build output
 npm run lint           # prettier --write + eslint --fix over src/**/*.ts
 npm run format          # prettier --write only
-npm test                # jest, all specs
+npm test                # jest, unit specs (*.spec.ts) only — e2e specs are excluded, see below
 npm run test:watch      # jest --watch
 npm run test:cov        # jest --coverage
+npm run test:e2e        # jest -c jest-e2e.config.ts, runs src/e2e/**/*.e2e-spec.ts
 ```
 
 Run a single test file or a single test case with jest's own flags, passed through the `test` script:
@@ -67,6 +68,10 @@ Uses `@nestjs/config` with the `registerAs` factory pattern, registered under an
 `README.md`'s "Folder Structure" section documents `languages/`, `modules/`, `queues/` and a full per-module layout (`dtos/guards/serializations/...`, following the [ack-nestjs-boilerplate](https://github.com/andrechristikan/ack-nestjs-boilerplate) convention, cross-checked against that project's current source) — **none of that exists yet**. The only real modules today are `app/` (the root wrapper module, a single health-check route) and `common/` (global config + the Swagger doc decorator toolkit). When adding a real feature module, follow the structure the README already documents rather than improvising a new one — in particular, a health-check module belongs under `modules/health`, not as its own top-level folder, and scheduled/background job processing belongs under `queues/`, not a `jobs/` folder.
 
 Per README: a module's `controller`/`service` file(s) live flat at the module's root when there's only one of each; they only move into `controllers/`/`services/` subfolders once a module has more than one.
+
+### Unit vs e2e tests use separate Jest configs
+
+`jest.config.ts` (`npm test`) and `jest-e2e.config.ts` (`npm run test:e2e`) both match on filename, not folder — `jest.config.ts` explicitly excludes `*.e2e-spec.ts` via `testPathIgnorePatterns` so the two runs never overlap. `src/e2e/app.e2e-spec.ts` boots `AppModule` directly via `Test.createTestingModule`, which does **not** carry `main.ts`'s imperative `app.setGlobalPrefix('api')` / `app.useGlobalInterceptors(new AppInterceptor())` calls — an e2e test has to set up whatever subset of that it actually needs itself (see that file for the pattern). If `main.ts`'s bootstrap grows more global setup, e2e tests relying on it need the same treatment.
 
 ### Relationship to other branches
 

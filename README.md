@@ -41,9 +41,10 @@ npm run start:dev
 1. `/app` The final wrapper module
 2. `/common` The common module
 3. `/configs` The configurations for this project
-4. `/languages` json languages
-5. `/modules` other modules based on service/project
-6. `/queues` background/scheduled job processing
+4. `/e2e` End-to-end tests that boot the whole app and hit real HTTP routes
+5. `/languages` json languages
+6. `/modules` other modules based on service/project
+7. `/queues` background/scheduled job processing
 
 ### Module structure
 
@@ -85,6 +86,11 @@ A module with more than one controller and/or service moves them into subfolders
     │   └── module2-cache.service.ts
     └── module2.module.ts
 ```
+
+### Testing
+
+- Unit tests (`*.spec.ts`) live next to the code they test and run via `npm test`.
+- End-to-end tests (`*.e2e-spec.ts`) live under `/e2e`, boot the whole app with `Test.createTestingModule` + `supertest`, and run via `npm run test:e2e` (separate config: `jest-e2e.config.ts`). `AppModule` alone doesn't carry `main.ts`'s global prefix/interceptor setup, so an e2e test that needs them has to set them up itself — see `e2e/app.e2e-spec.ts`.
 
 ### Response Structure
 
@@ -145,7 +151,8 @@ export interface IResponsePaging {
 - `npm start` — Starts the application in production mode (after build).
 - `npm run build` — Creates an optimized production build of your application.
 - `npm run lint` — Runs ESLint for all files in `src`.
-- `npm test` — Runs tests for all files in `src`.
+- `npm test` — Runs unit tests (`*.spec.ts`).
+- `npm run test:e2e` — Runs end-to-end tests (`*.e2e-spec.ts` under `/e2e`).
 
 ## Conventional Commits
 
