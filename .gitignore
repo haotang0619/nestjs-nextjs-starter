@@ -47,3 +47,7 @@ Thumbs.db
 
 # Storybook
 storybook-static
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
