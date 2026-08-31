@@ -8,7 +8,7 @@
     "build:analy": "ANALYZE=true next build",
     "start": "next start",
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"*.{ts,mjs,js}\"",
-    "lint": "npm run format && eslint --fix \"src/**/*.{ts,tsx}\"",
+    "lint": "npm run format && eslint --fix \"src/**/*.{ts,tsx}\" \"*.{ts,mjs,js}\"",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -23,7 +23,7 @@
     "@mui/material": "^9.4.0",
     "@mui/material-nextjs": "^9.4.0",
     "@tanstack/react-query": "^5.102.8",
-    "@types/node": "^20",
+    "@types/node": "^24.13.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "axios": "^1.20.0",
