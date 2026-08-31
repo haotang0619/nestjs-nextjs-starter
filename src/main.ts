@@ -6,6 +6,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppInterceptor } from './app/app.interceptor';
 import { AppModule } from './app/app.module';
 
+const swaggerPath = '/api/docs';
+
 const initSwagger = (app: INestApplication) => {
   const config = new DocumentBuilder()
     .setDescription('API documents.')
@@ -15,7 +17,7 @@ const initSwagger = (app: INestApplication) => {
 
   const document = SwaggerModule.createDocument(app, config, {});
 
-  SwaggerModule.setup('/api/docs', app, document, {
+  SwaggerModule.setup(swaggerPath, app, document, {
     customSiteTitle: 'Api Docs',
   });
 };
@@ -36,6 +38,7 @@ async function bootstrap() {
   const port = process.env.PORT || 4000;
   await app.listen(port);
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
+  Logger.log(`📚 Swagger docs available at: http://localhost:${port}${swaggerPath}`);
 }
 
 bootstrap();
