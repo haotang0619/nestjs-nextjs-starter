@@ -14,8 +14,7 @@
 
 ## Prerequisite
 
-- Node.js >= 20 to run the app.
-- Node.js **>= 24.9** to run `npm test` — `@nestjs/testing` (and the rest of the `@nestjs/*` packages) ship as pure ESM in Nest 12, and Jest can only `require()` them via Node's native `require(esm)` support, which needs Node 24.9+. The `test` scripts already pass `--experimental-vm-modules` to enable this; a lower Node version will fail with `ERR_REQUIRE_ESM` regardless.
+- Node.js >= 24.9 — required by `npm test` (`@nestjs/*` ships as pure ESM in Nest 12; Jest needs Node's `require(esm)` support, available from 24.9). The `test` scripts already pass `--experimental-vm-modules` to enable it.
 
 ## Development
 
