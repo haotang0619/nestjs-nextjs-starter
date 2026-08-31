@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 import { GENERAL_Z_INDEX } from '@/constants/layout';
 
 import { colorVariables as colorVar } from './colorVariables';
-import { TextSize, TextWeight, poppins, textHierarchy, textStyle } from './util';
+import { poppins, textHierarchy, TextSize, textStyle, TextWeight } from './util';
 
 // Create a theme instance.
 export const theme = createTheme({

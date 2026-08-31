@@ -5,5 +5,5 @@ export function useScrollToHash(hash: string, ref: MutableRefObject<HTMLDivEleme
     if (window.location.hash === `#${hash}`) {
       ref.current?.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
     }
-  }, [hash, ref.current]);
+  }, [hash, ref]);
 }

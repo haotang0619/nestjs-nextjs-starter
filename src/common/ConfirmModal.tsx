@@ -110,10 +110,10 @@ const CloseButton = ({ onClose }: { onClose: () => void }) => (
 const MobileContainer = ({ children, onClose, open, sx }: ContainerProps) => {
   return (
     <Drawer
-      PaperProps={{ sx: { maxHeight: 'calc(var(--100vh) - 64px)' } }}
       anchor="bottom"
       onClose={onClose}
       open={open}
+      slotProps={{ paper: { sx: { maxHeight: 'calc(var(--100vh) - 64px)' } } }}
       sx={mergeSx(
         {
           '& .MuiDrawer-paper': {
@@ -147,7 +147,7 @@ export const CommonModal = ({
   onClose,
   open,
   sx,
-}: { disableBackdrop?: boolean } & ContainerProps) => {
+}: ContainerProps & { disableBackdrop?: boolean }) => {
   const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
   const Container = isMobile ? MobileContainer : DesktopContainer;
 

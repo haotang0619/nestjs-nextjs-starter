@@ -13,7 +13,6 @@ const withBundleAnalyzer = await getWrapper();
 const nextConfig = {
   experimental: { optimizePackageImports: ['iconsax-react'] },
   reactStrictMode: true,
-  swcMinify: true,
 };
 
 export default withBundleAnalyzer(nextConfig);

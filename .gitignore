@@ -13,8 +13,6 @@
 # next.js
 /.next/
 /out/
-/public/sitemap.xml
-/public/robots.txt
 
 # production
 /build

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 
 import toast, { Toaster, useToasterStore } from 'react-hot-toast';

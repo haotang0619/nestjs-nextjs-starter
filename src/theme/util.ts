@@ -6,7 +6,7 @@ export const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600
 export const mergeSx = (...allSx: SxProps<Theme>[]): SxProps<Theme> => {
   return allSx.reduce((merged, sx) => {
     const newSx = Array.isArray(sx) ? sx : !!sx ? [sx] : [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     return [...(merged as any), ...newSx];
   }, []);
 };
@@ -77,16 +77,9 @@ export const textStyle = (size: TextSize, weight = 'R' as TextWeight) => ({
 });
 
 export const webkitBoxOverflow = (n = 1 as number | string) => ({
-  WebkitBoxOrient: 'vertical',
-  WebkitLineClamp: n,
   display: '-webkit-box',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-});
-
-export const hideScrollbar = () => ({
-  '&::-webkit-scrollbar': { display: 'none' },
-  /* Hide scrollbar for IE, Edge and Firefox */
-  msOverflowStyle: 'none' /* IE and Edge */,
-  scrollbarWidth: 'none' /* Firefox */,
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: n,
 });
