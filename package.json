@@ -18,6 +18,7 @@
     "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watch",
     "test:cov": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
     "test:e2e": "node --experimental-vm-modules node_modules/.bin/jest --config jest-e2e.config.ts",
+    "script": "ts-node --files src/scripts/runner.ts",
     "prepare": "husky"
   },
   "lint-staged": {

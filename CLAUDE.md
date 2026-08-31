@@ -18,6 +18,7 @@ npm test                # jest, unit specs (*.spec.ts) only — e2e specs are ex
 npm run test:watch      # jest --watch
 npm run test:cov        # jest --coverage
 npm run test:e2e        # jest -c jest-e2e.config.ts, runs src/e2e/**/*.e2e-spec.ts
+npm run script <name>   # ts-node src/scripts/runner.ts, runs src/scripts/commands/<name>.ts's exported run()
 ```
 
 Run a single test file or a single test case with jest's own flags, passed through the `test` script:
@@ -72,6 +73,12 @@ Per README: a module's `controller`/`service` file(s) live flat at the module's 
 ### Unit vs e2e tests use separate Jest configs
 
 `jest.config.ts` (`npm test`) and `jest-e2e.config.ts` (`npm run test:e2e`) both match on filename, not folder — `jest.config.ts` explicitly excludes `*.e2e-spec.ts` via `testPathIgnorePatterns` so the two runs never overlap. `src/e2e/app.e2e-spec.ts` boots `AppModule` directly via `Test.createTestingModule`, which does **not** carry `main.ts`'s imperative `app.setGlobalPrefix('api')` / `app.useGlobalInterceptors(new AppInterceptor())` calls — an e2e test has to set up whatever subset of that it actually needs itself (see that file for the pattern). If `main.ts`'s bootstrap grows more global setup, e2e tests relying on it need the same treatment.
+
+### CLI scripts (`src/scripts/`)
+
+`runner.ts` loads `commands/<name>.ts` with a plain `require()`, not a dynamic `import()` — this project's `tsconfig.json` uses `module: nodenext`, which preserves `import()` as a real native dynamic import instead of downleveling it to `require()` the way classic `module: commonjs` would, and a native dynamic import goes through Node's ESM resolver (which doesn't know about ts-node's CJS require-hook and can't resolve an extensionless `.ts` path). Keep using `require()` here rather than switching back to `import()`.
+
+New scripts should extend `AbstractScript` (`scripts/abstract-script.ts`), not hand-roll their own `NestFactory.createApplicationContext`/`app.close()`/try-catch — it centralizes that plus consistent logging and a non-zero exit code on failure, so a script only implements `execute(app)`. On purpose it has no input/output file or CLI-arg-parsing conventions built in (unlike a heavier script framework you may have seen elsewhere) — add that per-script, or factor it out once it's actually duplicated, rather than speculatively generalizing now.
 
 ### Relationship to other branches
 

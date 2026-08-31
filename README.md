@@ -45,6 +45,8 @@ npm run start:dev
 5. `/languages` json languages
 6. `/modules` other modules based on service/project
 7. `/queues` background/scheduled job processing
+8. `/scripts` One-off/maintenance scripts run via `npm run script <name>`
+9. `/utils` Small stateless helper functions shared across modules
 
 ### Module structure
 
@@ -91,6 +93,14 @@ A module with more than one controller and/or service moves them into subfolders
 
 - Unit tests (`*.spec.ts`) live next to the code they test and run via `npm test`.
 - End-to-end tests (`*.e2e-spec.ts`) live under `/e2e`, boot the whole app with `Test.createTestingModule` + `supertest`, and run via `npm run test:e2e` (separate config: `jest-e2e.config.ts`). `AppModule` alone doesn't carry `main.ts`'s global prefix/interceptor setup, so an e2e test that needs them has to set them up itself — see `e2e/app.e2e-spec.ts`.
+
+### CLI Scripts
+
+`/scripts` holds one-off/maintenance scripts that need the app's DI container but not an HTTP server (`NestFactory.createApplicationContext`, not `NestFactory.create`). Run one with `npm run script <name>`, where `<name>` matches a file under `/scripts/commands` — copy `hello.ts` as a starting point.
+
+New scripts should extend `AbstractScript` (`scripts/abstract-script.ts`) rather than hand-rolling their own bootstrap: it handles creating/closing the app context, consistent start/end logging, and setting a non-zero exit code on failure, so a script only has to implement `execute(app)`. It deliberately stops there — no input/output file conventions or CLI argument parsing are baked in; add that in the script itself (or factor it out once more than one script actually needs the same shape).
+
+`runner.ts` is the shared entry point: it loads `commands/<name>.ts` and calls its exported `run()`, so a new script just needs to export that function (typically a one-liner that does `new MyScript().run()`).
 
 ### Response Structure
 
@@ -153,6 +163,7 @@ export interface IResponsePaging {
 - `npm run lint` — Runs ESLint for all files in `src`.
 - `npm test` — Runs unit tests (`*.spec.ts`).
 - `npm run test:e2e` — Runs end-to-end tests (`*.e2e-spec.ts` under `/e2e`).
+- `npm run script <name>` — Runs a one-off script under `/scripts/commands` (e.g. `npm run script hello`).
 
 ## Conventional Commits
 
