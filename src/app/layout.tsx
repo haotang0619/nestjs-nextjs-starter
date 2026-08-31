@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <style dangerouslySetInnerHTML={{ __html: `:root{${rootStyle};--100vh:100vh;--vh:1vh}` }} />
       </head>
 
-      <body>
+      <body suppressHydrationWarning>
         {/* Polyfill of Object.hasOwn */}
         <Script id="has-own-polyfill" strategy="beforeInteractive">
           {`"function"!=typeof Object.hasOwn&&(Object.hasOwn=function(t,n){return Object.prototype.hasOwnProperty.call(t,n)});`}
