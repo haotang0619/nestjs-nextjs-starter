@@ -1,0 +1,65 @@
+{
+  "name": "nestjs-starter",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">= 24.9"
+  },
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "npm run format && eslint --fix \"src/**/*.ts\"",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watch",
+    "test:cov": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "./src/**/*.ts": [
+      "eslint --fix",
+      "prettier --ignore-path .gitignore --write"
+    ]
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.0.1",
+    "@nestjs/config": "^12.0.0",
+    "@nestjs/core": "^12.0.1",
+    "@nestjs/platform-express": "^12.0.1",
+    "@nestjs/swagger": "^12.0.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "helmet": "^8.3.0",
+    "husky": "^9.1.7",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "safe-stable-stringify": "^2.5.0",
+    "ua-parser-js": "^2.0.10"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@nestjs/cli": "^12.0.0",
+    "@nestjs/schematics": "^12.0.0",
+    "@nestjs/testing": "^12.0.1",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.13.3",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-perfectionist": "^5.11.0",
+    "eslint-plugin-prettier": "^5.5.6",
+    "jest": "^30.5.0",
+    "lint-staged": "^17.4.1",
+    "prettier": "^3.9.6",
+    "source-map-support": "^0.5.21",
+    "ts-jest": "^29.4.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.68.0"
+  }
+}
