@@ -1,0 +1,6 @@
+packages:
+  - 'apps/*'
+allowBuilds:
+  '@parcel/watcher': false
+  '@scarf/scarf': false
+  unrs-resolver: false

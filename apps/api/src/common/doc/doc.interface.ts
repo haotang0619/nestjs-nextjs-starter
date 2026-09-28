@@ -9,19 +9,19 @@ export interface IDocDefaultOptions {
 }
 
 export interface IDocOptions<T> {
-  response?: IDocResponseOptions<T>;
   request?: IDocRequestOptions;
+  response?: IDocResponseOptions<T>;
   summary?: string;
 }
 
-interface IDocResponseOptions<T> {
-  httpStatus?: HttpStatus;
-  messageExample?: string;
-  classSerialization?: ClassConstructor<T>;
-}
-
 interface IDocRequestOptions {
+  bodyType?: 'FORM_DATA' | 'JSON';
   params?: ApiParamOptions[];
   queries?: ApiQueryOptions[];
-  bodyType?: 'FORM_DATA' | 'JSON';
+}
+
+interface IDocResponseOptions<T> {
+  classSerialization?: ClassConstructor<T>;
+  httpStatus?: HttpStatus;
+  messageExample?: string;
 }

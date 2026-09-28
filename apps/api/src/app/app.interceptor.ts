@@ -1,11 +1,6 @@
 import { STATUS_CODES } from 'http';
 
-import {
-  CallHandler,
-  ExecutionContext,
-  Injectable,
-  NestInterceptor,
-} from '@nestjs/common';
+import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
 import { Response } from 'express';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -32,10 +27,9 @@ export class AppInterceptor implements NestInterceptor {
 
       return next.handle().pipe(
         map((data) => {
-          const message =
-            res.message || statusMessage || STATUS_CODES[statusCode] || 'OK';
+          const message = res.message || statusMessage || STATUS_CODES[statusCode] || 'OK';
           const success = res.success ?? true;
-          return { statusCode, message, success, data: transformer(data) };
+          return { data: transformer(data), message, statusCode, success };
         }),
       );
     }

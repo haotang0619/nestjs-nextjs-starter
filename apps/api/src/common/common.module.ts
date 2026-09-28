@@ -6,11 +6,11 @@ import configs from '../configs';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: configs,
-      isGlobal: true,
       cache: true,
       envFilePath: ['.env'],
       expandVariables: true,
+      isGlobal: true,
+      load: configs,
     }),
   ],
 })

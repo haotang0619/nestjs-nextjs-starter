@@ -1,14 +1,12 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { INestApplication, Logger, ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { AppInterceptor } from './app/app.interceptor';
 import { AppModule } from './app/app.module';
+
+const swaggerPath = '/api/docs';
 
 const initSwagger = (app: INestApplication) => {
   const config = new DocumentBuilder()
@@ -19,16 +17,14 @@ const initSwagger = (app: INestApplication) => {
 
   const document = SwaggerModule.createDocument(app, config, {});
 
-  SwaggerModule.setup('/api/docs', app, document, {
+  SwaggerModule.setup(swaggerPath, app, document, {
     customSiteTitle: 'Api Docs',
   });
 };
 
-// CORS whitelist (ex: web, storybook)
-const whitelist = ['http://localhost:4200', 'http://localhost:4400'];
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
@@ -36,14 +32,13 @@ async function bootstrap() {
   app.enableCors({
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    origin: whitelist,
+    origin: [configService.get<string>('webUrl')],
   });
   initSwagger(app);
-  const port = process.env.PORT || 3333;
+  const port = process.env.PORT || 4000;
   await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`,
-  );
+  Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
+  Logger.log(`📚 Swagger docs available at: http://localhost:${port}${swaggerPath}`);
 }
 
 bootstrap();

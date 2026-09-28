@@ -1,5 +1,5 @@
 import { Controller, Get, Res } from '@nestjs/common';
-import { Response } from 'express';
+import type { Response } from 'express';
 
 import { HealthCheckDoc } from './app.doc';
 import { AppService } from './app.service';
@@ -8,8 +8,8 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @HealthCheckDoc()
   @Get()
+  @HealthCheckDoc()
   getData(@Res({ passthrough: true }) res: Response) {
     return this.appService.getData(res);
   }

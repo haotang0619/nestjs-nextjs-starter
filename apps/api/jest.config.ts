@@ -1,15 +1,16 @@
-export default {
-  displayName: 'api',
-  preset: '../../jest.preset.js',
-  globals: {
-    'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.spec.json',
-    },
-  },
+import type { Config } from 'jest';
+
+const config: Config = {
+  collectCoverageFrom: ['src/**/*.(t|j)s'],
+  coverageDirectory: './coverage',
+  moduleFileExtensions: ['js', 'json', 'ts'],
+  rootDir: '.',
   testEnvironment: 'node',
+  testPathIgnorePatterns: ['/node_modules/', '\\.e2e-spec\\.ts$'],
+  testRegex: '.*\\.spec\\.ts$',
   transform: {
-    '^.+\\.[tj]s$': 'ts-jest',
+    '^.+\\.(t|j)s$': 'ts-jest',
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/api',
 };
+
+export default config;

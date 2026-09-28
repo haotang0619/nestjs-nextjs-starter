@@ -1,0 +1,39 @@
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* MUI's CssBaseline already provides the reset, so Tailwind's preflight layer is
+   intentionally not imported above to avoid the two resets fighting each other. */
+
+*:focus {
+  outline: none;
+}
+
+body *:not(.show-scrollbar) {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body *:not(.show-scrollbar)::-webkit-scrollbar {
+  display: none;
+}
+
+input:-webkit-autofill {
+  border-radius: 12px !important;
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--neutral-1) inset !important;
+}
+
+input[type='text'] {
+  border: none;
+  border-color: transparent;
+}
+
+/* nextjs-toploader (via NProgress) toggles this class on <html> for the exact duration of a
+   route change, so we piggyback on it to dim the page and block clicks mid-navigation. */
+html.nprogress-busy body {
+  opacity: 0.5;
+}
+
+html.nprogress-busy body *:not(.show-scrollbar) {
+  pointer-events: none !important;
+}

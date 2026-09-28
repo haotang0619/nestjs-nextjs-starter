@@ -27,7 +27,7 @@ node_modules
 # misc
 /.sass-cache
 /connect.lock
-/coverage
+coverage
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
@@ -38,16 +38,13 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Nx
-.nx
-
 # Next.js
 .next
-.env.local
+next-env.d.ts
 
-# Storybook
-storybook-static
+# dotenv environment variable files
+.env
+.env*.local
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts

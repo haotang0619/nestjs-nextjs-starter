@@ -30,15 +30,11 @@ export function Doc<T>(options?: IDocOptions<T>): MethodDecorator {
   docs.push(DocDefault(normDoc));
 
   if (options?.request?.params) {
-    docs.push(
-      ...(options?.request?.params || []).map((param) => ApiParam(param)),
-    );
+    docs.push(...(options?.request?.params || []).map((param) => ApiParam(param)));
   }
 
   if (options?.request?.queries) {
-    docs.push(
-      ...(options?.request?.queries || []).map((query) => ApiQuery(query)),
-    );
+    docs.push(...(options?.request?.queries || []).map((query) => ApiQuery(query)));
   }
 
   if (options?.summary) {
@@ -57,9 +53,9 @@ export function DocDefault<T>({
   const schema: Record<string, any> = {
     allOf: [{ $ref: getSchemaPath(AppResponseSerialization<T>) }],
     properties: {
-      statusCode: { type: 'number', example: status },
-      message: { type: 'string', example: messageExample },
-      success: { type: 'boolean', example: true },
+      message: { example: messageExample, type: 'string' },
+      statusCode: { example: status, type: 'number' },
+      success: { example: true, type: 'boolean' },
     },
   };
 
@@ -70,7 +66,7 @@ export function DocDefault<T>({
 
   return applyDecorators(
     ApiExtraModels(AppResponseSerialization<T>),
-    ApiResponse({ status, schema }),
+    ApiResponse({ schema, status }),
     ...docs,
   );
 }

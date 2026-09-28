@@ -7,12 +7,14 @@ import { AppMiddleware } from './app.middleware';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [CommonModule],
   controllers: [AppController],
+  imports: [CommonModule],
   providers: [AppService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(AppMiddleware).forRoutes('*');
+    // Express 5 / path-to-regexp v8 requires the wildcard to be named
+    // (bare '*' still works via Nest's LegacyRouteConverter shim, but warns).
+    consumer.apply(AppMiddleware).forRoutes('*path');
   }
 }

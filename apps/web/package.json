@@ -1,0 +1,55 @@
+{
+  "name": "nextjs-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:analy": "ANALYZE=true next build",
+    "start": "next start",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\" \"*.{ts,mjs,js}\"",
+    "lint": "pnpm format && eslint --fix \"src/**/*.{ts,tsx}\" \"*.{ts,mjs,js}\""
+  },
+  "lint-staged": {
+    "./src/**/*.{ts,js,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --ignore-path .gitignore --write"
+    ]
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^9.4.0",
+    "@mui/material-nextjs": "^9.4.0",
+    "@tanstack/react-query": "^5.102.8",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "axios": "^1.20.0",
+    "global": "^4.4.0",
+    "iconsax-react": "^0.0.8",
+    "next": "16.3.3",
+    "nextjs-toploader": "^3.9.17",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-hook-form": "^7.86.0",
+    "react-hot-toast": "^2.6.0",
+    "typescript": "^5.9.3",
+    "usehooks-ts": "^3.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@next/bundle-analyzer": "^16.3.3",
+    "@tailwindcss/postcss": "^4.3.3",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.3.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-perfectionist": "^5.10.1",
+    "eslint-plugin-prettier": "^5.5.6",
+    "lint-staged": "^16.2.4",
+    "postcss": "^8.5.26",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4.3.3"
+  }
+}
