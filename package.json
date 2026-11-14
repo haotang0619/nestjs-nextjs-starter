@@ -11,6 +11,7 @@
     "lint": "npm run format && eslint --fix \"src/**/*.{ts,tsx}\" \"*.{ts,mjs,js}\"",
     "prepare": "husky"
   },
+  "prettier": "@hao_tang/prettier-config",
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
       "eslint --fix",
@@ -41,14 +42,14 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",
-    "@commitlint/config-conventional": "^21.2.2",
+    "@hao_tang/commitlint-config": "^1.0.0",
+    "@hao_tang/eslint-config": "^1.0.0",
+    "@hao_tang/prettier-config": "^1.0.0",
+    "@hao_tang/tsconfig": "^1.0.0",
     "@next/bundle-analyzer": "^16.3.3",
     "@tailwindcss/postcss": "^4.3.3",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.3.3",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-perfectionist": "^5.10.1",
-    "eslint-plugin-prettier": "^5.5.6",
     "lint-staged": "^16.2.4",
     "postcss": "^8.5.26",
     "prettier": "^3.9.6",
