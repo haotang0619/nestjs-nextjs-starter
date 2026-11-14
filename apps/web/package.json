@@ -26,7 +26,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "axios": "^1.20.0",
-    "global": "^4.4.0",
     "iconsax-react": "^0.0.8",
     "next": "16.3.3",
     "nextjs-toploader": "^3.9.17",
@@ -38,15 +37,12 @@
     "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.2.2",
-    "@commitlint/config-conventional": "^21.2.2",
     "@hao_tang/eslint-config": "^1.0.0",
     "@hao_tang/tsconfig": "^1.0.0",
     "@next/bundle-analyzer": "^16.3.3",
     "@tailwindcss/postcss": "^4.3.3",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.3.3",
-    "lint-staged": "^16.2.4",
     "postcss": "^8.5.26",
     "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3"
