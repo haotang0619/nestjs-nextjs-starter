@@ -4,3 +4,8 @@ allowBuilds:
   '@parcel/watcher': false
   '@scarf/scarf': false
   unrs-resolver: false
+minimumReleaseAgeExclude:
+  - '@hao_tang/commitlint-config@1.0.0'
+  - '@hao_tang/eslint-config@1.0.0'
+  - '@hao_tang/prettier-config@1.0.0'
+  - '@hao_tang/tsconfig@1.0.0'
