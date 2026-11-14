@@ -227,6 +227,9 @@ importers:
       '@hao_tang/eslint-config':
         specifier: ^1.0.0
         version: 1.0.0(@eslint/js@9.39.5)(eslint-config-next@16.3.3(@typescript-eslint/parser@8.70.1(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(prettier@3.9.9)(supports-color@8.1.1)(typescript@6.0.3)
+      '@hao_tang/tsconfig':
+        specifier: ^1.1.0
+        version: 1.1.0
       '@nestjs/cli':
         specifier: ^12.0.0
         version: 12.0.7(@types/node@24.19.0)(prettier@3.9.9)
@@ -331,8 +334,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(@eslint/js@9.39.5)(eslint-config-next@16.3.3(@typescript-eslint/parser@8.70.1(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(prettier@3.9.9)(supports-color@8.1.1)(typescript@5.9.3)
       '@hao_tang/tsconfig':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.1.0
+        version: 1.1.0
       '@next/bundle-analyzer':
         specifier: ^16.3.3
         version: 16.3.6
@@ -794,8 +797,8 @@ packages:
     peerDependencies:
       prettier: ^3
 
-  '@hao_tang/tsconfig@1.0.0':
-    resolution: {integrity: sha512-Yi5JxNBWwdRHO72CJA2ixjbrALWsM3W5NRM52RHLujHlV8+TkFxdTnMSLMOHyF+eDhw2OIiEyQgu0EjBOfSQTQ==}
+  '@hao_tang/tsconfig@1.1.0':
+    resolution: {integrity: sha512-P2thiN02QAccHFjKIoaIGU1ydTlRaJUKqBg1GGM0gf24XzYK9bFxtpbGoF8YMiL4BN9eHiBipoX6dLbHQniu8w==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -5433,7 +5436,7 @@ snapshots:
     dependencies:
       prettier: 3.9.9
 
-  '@hao_tang/tsconfig@1.0.0': {}
+  '@hao_tang/tsconfig@1.1.0': {}
 
   '@humanfs/core@0.19.2':
     dependencies:

@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@hao_tang/eslint-config": "^1.0.0",
-    "@hao_tang/tsconfig": "^1.0.0",
+    "@hao_tang/tsconfig": "^1.1.0",
     "@next/bundle-analyzer": "^16.3.3",
     "@tailwindcss/postcss": "^4.3.3",
     "eslint": "^9.39.5",
