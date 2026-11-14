@@ -41,3 +41,6 @@ next-env.d.ts
 
 # TypeScript incremental build info
 *.tsbuildinfo
+
+# main branch
+apps/
