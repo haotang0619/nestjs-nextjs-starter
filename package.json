@@ -49,6 +49,7 @@
     "@hao_tang/commitlint-config": "^1.0.0",
     "@hao_tang/eslint-config": "^1.0.0",
     "@hao_tang/prettier-config": "^1.0.0",
+    "@hao_tang/tsconfig": "^1.1.0",
     "@nestjs/cli": "^12.0.0",
     "@nestjs/schematics": "^12.0.0",
     "@nestjs/testing": "^12.0.1",
